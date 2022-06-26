@@ -1,0 +1,11 @@
+urlshortener:
+  urlLengthLimit: ${URL_LENGTH_LIMIT:6}
+  duplicateKeyRetrial: ${DUPLICATE_KEY_RETRIAL:6}
+  cacheSize: ${CACHE_SIZE:10}
+
+server.servlet.context-path: ${SERVER_CONTEXT_PATH:/url-shortener}
+
+spring:
+  data:
+    mongodb:
+      uri: 'mongodb://riya:riya@localhost:27017/url-shortener?authSource=admin'
