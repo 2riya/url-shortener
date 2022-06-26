@@ -37,6 +37,20 @@ class URLShortenerControllerTest {
     }
 
     @Test
+    void invalidOriginalUrlTest() {
+        ShortenUrlRequest shortenUrlRequest =
+            ShortenUrlRequest.builder().originalUrl("abcd").build();
+        ResponseEntity<ShortenedUrlResponse> shortenedUrlResponse =
+            urlShortenerController.createShortUrl(shortenUrlRequest);
+        Assertions.assertNotNull(shortenedUrlResponse);
+        Assertions.assertNotNull(shortenedUrlResponse.getBody());
+        Assertions.assertEquals(HttpStatus.UNPROCESSABLE_ENTITY,
+            shortenedUrlResponse.getStatusCode());
+        Assertions.assertEquals("Invalid URL",
+            shortenedUrlResponse.getBody().getErrorMessage());
+    }
+
+    @Test
     void invalidCharsCustomUrlTest() {
         ShortenUrlRequest shortenUrlRequest =
             ShortenUrlRequest.builder().originalUrl("https://www.google.com")

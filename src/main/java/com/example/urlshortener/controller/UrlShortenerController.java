@@ -29,6 +29,7 @@ public class UrlShortenerController {
         try {
             ValidationUtil.validateString(shortenUrlRequest.getOriginalUrl(),
                 "Original URL must be present");
+            ValidationUtil.validateURL(shortenUrlRequest.getOriginalUrl());
             ValidationUtil.validateCustomShortUrl(shortenUrlRequest.getCustomShortUrl(),
                 urlShortener.getUrlLengthLimit());
         } catch (IllegalArgumentException e) {

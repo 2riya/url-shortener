@@ -3,12 +3,24 @@ package com.example.urlshortener.util;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
+import java.net.URI;
+import java.net.URL;
+
 @Component
 public class ValidationUtil {
 
     public static boolean validateString(String str, String errorMessage) {
         if (StringUtils.isBlank(str)) {
             throw new IllegalArgumentException(errorMessage);
+        }
+        return true;
+    }
+
+    public static boolean validateURL(String str) {
+        try {
+            new URL(str).toURI();
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Invalid URL");
         }
         return true;
     }

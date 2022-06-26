@@ -3,4 +3,4 @@
 
 **Database(s) Used:** url-shortener MongoDB
 
-**JUnit Test Coverage:** 100% classes, 77% lines
+**JUnit Test Coverage:** 100% classes, 78% lines
