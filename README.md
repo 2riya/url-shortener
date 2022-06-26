@@ -1,2 +1,6 @@
 # url-shortener
-Spring Boot Application to implement URL Shortening Service
+**Description:** Spring Boot Application to implement URL Shortening Service
+
+**Database(s) Used:** url-shortener MongoDB
+
+**JUnit Test Coverage:** 100% classes, 77% lines
