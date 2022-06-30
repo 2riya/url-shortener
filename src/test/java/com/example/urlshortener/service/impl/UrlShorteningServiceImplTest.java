@@ -22,7 +22,6 @@ class UrlShorteningServiceImplTest {
     @Captor
     private ArgumentCaptor<Url> urlArgumentCaptor;
 
-    // successfully created random url
     @Test
     void randomUrlCreationTest() throws Exception {
         ShortenUrlRequest shortenUrlRequest =
@@ -42,7 +41,6 @@ class UrlShorteningServiceImplTest {
         Assertions.assertEquals(urlShortener.getUrlLengthLimit(), shortenedUrlResponse.getShortenedUrl().length());
     }
 
-    // successfully created custom url
     @Test
     void customUrlCreationTest() throws Exception {
         ShortenUrlRequest shortenUrlRequest =
@@ -59,9 +57,6 @@ class UrlShorteningServiceImplTest {
         Assertions.assertEquals(shortenUrlRequest.getCustomShortUrl(), urlArgumentCaptor.getValue().getShortUrl());
     }
 
-    // duplicate key exception test
-
-    // fetch original url
     @Test
     void fetchOriginalUrlTest() {
         Url url = Url.builder().shortUrl("xyzPQR").longUrl("https://www.google.com/").build();
@@ -74,8 +69,6 @@ class UrlShorteningServiceImplTest {
         Assertions.assertEquals(url.getLongUrl(), originalUrl);
     }
 
-
-    // original url not found
     @Test
     void originalUrlNotPresentTest() {
         String shortUrl = "xyzPQR";
@@ -86,5 +79,4 @@ class UrlShorteningServiceImplTest {
         Mockito.verify(urlRepository, Mockito.times(1)).findLongUrlByShortUrl(shortUrl);
         Assertions.assertEquals("", originalUrl);
     }
-
 }
